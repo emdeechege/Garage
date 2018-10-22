@@ -14,6 +14,7 @@ class Profile(models.Model):
     phone = models.PositiveIntegerField(default=0)
     physical_address = models.CharField(max_length=240, null=True)
     join_date = models.DateTimeField(auto_now_add=True)
+    email = models.CharField(max_length=100, blank=True, null=True)
 
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
