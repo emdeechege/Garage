@@ -58,25 +58,26 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
-@login_required(login_url='/accounts/login/')
 def home(request):
-    vehicles = Vehicle.get_vehicles()
-    bookings = Booking.get_booking()
-    profile = Profile.get_profile()
+    if request.user.is_authenticated:
+        vehicles = Vehicle.get_vehicles()
+        bookings = Booking.get_booking()
+        profile = Profile.get_profile()
 
-    current_user = request.user
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            booking = form.save(commit=False)
-            booking.user = current_user
-            booking.save()
-        return redirect('home')
+        current_user = request.user
+        if request.method == 'POST':
+            form = BookingForm(request.POST)
+            if form.is_valid():
+                booking = form.save(commit=False)
+                booking.user = current_user
+                booking.save()
+            return redirect('home')
 
+        else:
+            form = BookingForm()
+            return render(request, "home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
     else:
-        form = BookingForm()
-
-    return render(request, "home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
+        return render(request, "home.html")
 
 
 @login_required(login_url='/accounts/login/')

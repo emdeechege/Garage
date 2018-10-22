@@ -33,8 +33,8 @@ class Profile(models.Model):
         profile = Profile.objects.all()
         return profile
 
-    class Meta:
-        ordering = ['user']
+    def __str__(self):
+        return str(self.user)
 
 
 class Vehicle(models.Model):
@@ -52,7 +52,7 @@ class Vehicle(models.Model):
         return vehicles
 
     def __str__(self):
-        return str(self.caption)
+        return str(self.registration)
 
 
 class Booking(models.Model):
@@ -71,3 +71,6 @@ class Booking(models.Model):
     def get_booking(cls):
         bookings = Booking.objects.all()
         return bookings
+
+    def __str__(self):
+        return str(self.service)
