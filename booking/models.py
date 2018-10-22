@@ -66,13 +66,7 @@ class Booking(models.Model):
                                 related_name='bookings', null=True)
     service = MultiSelectField(choices=CHOICES, default=0)
 
-    def __str__(self):
-        return self.comment
-
-    def save_comment(self):
-        self.save()
-
     @classmethod
-    def get_comment(cls):
-        comment = Comment.objects.all()
-        return comment
+    def get_booking(cls):
+        bookings = Booking.objects.all()
+        return bookings

@@ -89,7 +89,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'booking.urls'
+ROOT_URLCONF = 'garage.urls'
 
 TEMPLATES = [
     {
