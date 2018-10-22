@@ -79,11 +79,12 @@ def home(request):
     return render(request, "home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
 
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     profile = Profile.objects.get(user=request.user)
-    hoods = Hood.objects.filter(user=request.user).all()
-    business = Business.objects.filter(user=request.user).all()
-    return render(request, 'profiles/profile.html', {"profile": profile, "hoods": hoods, "business": business})
+    vehicle = Vehicle.objects.filter(posted_by=request.user).all()
+
+    return render(request, 'profiles/profile.html', {"profile": profile, "vehicle": vehicle})
 
 
 @login_required(login_url='/accounts/login/')

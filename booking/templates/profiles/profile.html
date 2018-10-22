@@ -35,15 +35,15 @@
 
           <ul class="list-inline">
             <li class="list-inline-item">
-              <span class="font-weight-bold">{{hoods|length}}</span> Hoods
+              <span class="font-weight-bold">{{vehicles|length}}</span> Vehicles
             </li>
             <li class="list-inline-item">
-              <span class="font-weight-bold">{{business|length}}</span> Business
+              <span class="font-weight-bold"></span> Business
             </li>
           </ul>
           <p class="font3">{{profile.bio}}</p>
           {% if profile.user == user %}
-          <p><a href="{% url 'create_hood' %}">Create Hood</a></p>
+          <p><a href="">Create Vehicle</a></p>
           {% endif %}
         </div>
       </div>
@@ -53,32 +53,21 @@
   <div class="container">
     <div class="row">
 
-      {% for hood in hoods %}
-      <div class="col-md-4">
-        <h4>Hoods</h4>
-        <img src="{{hood.hood_photo.url}}" alt="Image" style="height:300px;width:300px;">
-        <p>{{hood.hood_name}}</p>
-        <a href="{% url 'update_hood' hood.id %}" class="btn btn-sm btn-danger">Update Your Hood</a>
-        <a href="{% url 'delete_hood' hood.id %}" class="btn btn-sm btn-danger">Delete</a>
+      {% for vehicle in vehicles %}
+      <div class="col-md-8">
+        <h4>Vehicles</h4>
+        <img src="{{vehicle.vehicle_photo.url}}" alt="Image" style="height:300px;width:300px;">
+        <p>{{vehicle.vehicle_name}}</p>
+        <a href="{% url 'update_vehicle' vehicle.id %}" class="btn btn-sm btn-danger">Update Your Vehicle</a>
+        <a href="{% url 'delete_vehicle' vehicle.id %}" class="btn btn-sm btn-danger">Delete</a>
         <hr>
       </div>
       {% empty %}
       <div>
-        <h2>Profile has no hoods</h2>
+        <h2>Profile has no vehicles</h2>
       </div>
       {% endfor %}
-      <div class="col-4">
-        <h4>Business</h4>
-  {% for biz in business %}
-  <img src="{{biz.b_photo.url}}" alt="Image" style="height:300px;width:300px;">
-  <p>{{biz.b_name}}</p>
-  {% empty %}
-  <div>
-    <h2>Profile has no business</h2>
-  </div>
-  {% endfor %}
 
-      </div>
     </div>
 
   </div>
