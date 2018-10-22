@@ -13,3 +13,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user', 'join_date', 'email']
+
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Vehicle
+        exclude = ['posted_by', 'profile']

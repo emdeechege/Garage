@@ -43,7 +43,7 @@
           </ul>
           <p class="font3">{{profile.bio}}</p>
           {% if profile.user == user %}
-          <p><a href="">Create Vehicle</a></p>
+          <p><a href="">Add Vehicle</a></p>
           {% endif %}
         </div>
       </div>
@@ -53,13 +53,12 @@
   <div class="container">
     <div class="row">
 
-      {% for vehicle in vehicles %}
+      {% for vehicle in vehicle %}
       <div class="col-md-8">
         <h4>Vehicles</h4>
-        <img src="{{vehicle.vehicle_photo.url}}" alt="Image" style="height:300px;width:300px;">
+        <img src="{{vehicle.vehicle_image.url}}" alt="Image" style="height:300px;width:300px;">
         <p>{{vehicle.vehicle_name}}</p>
-        <a href="{% url 'update_vehicle' vehicle.id %}" class="btn btn-sm btn-danger">Update Your Vehicle</a>
-        <a href="{% url 'delete_vehicle' vehicle.id %}" class="btn btn-sm btn-danger">Delete</a>
+
         <hr>
       </div>
       {% empty %}

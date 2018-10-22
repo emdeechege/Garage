@@ -10,6 +10,7 @@ urlpatterns = [
         views.activate, name='activate'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^editprofile/$', views.edit_profile, name='edit_profile'),
+    url(r'^upload/', views.update_vehicle, name='upload'),
 ]
 
 if settings.DEBUG:
