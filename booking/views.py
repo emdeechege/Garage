@@ -14,6 +14,8 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 
 # Create your views here.
+
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -54,3 +56,24 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for your email confirmation. <a href="https://garage-fix.herokuapp.com"> Login </a> Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
+
+
+@login_required(login_url='/accounts/login/')
+def home(request):
+    vehicles = Vehicle.get_vehicles()
+    bookings = Booking.get_booking()
+    profile = Profile.get_profile()
+
+    current_user = request.user
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = current_user
+            booking.save()
+        return redirect('home')
+
+    else:
+        form = BookingForm()
+
+    return render(request, "home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
