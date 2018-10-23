@@ -1,4 +1,10 @@
-
+.footer_area{
+  background-color: black;
+  height: 400px;
+}
+.team-wrapper{
+  height: 650px;
+}
 /*!
  * Bootswatch v4.1.3
  * Homepage: https://bootswatch.com
