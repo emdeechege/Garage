@@ -58,6 +58,10 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
+def welcome(request):
+    return render(request, 'index.html')
+
+
 def home(request):
     if request.user.is_authenticated:
         vehicles = Vehicle.get_vehicles()
@@ -75,7 +79,7 @@ def home(request):
 
         else:
             form = BookingForm()
-            return render(request, "home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
+            return render(request, "vehicle/home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
     else:
         return render(request, "home.html")
 

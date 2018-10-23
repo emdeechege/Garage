@@ -1,0 +1,464 @@
+{%extends 'base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<br>
+<br>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<div class="hero-section" style="vh:100;">
+  <div class="d-flex justify-content-center">
+    <div class="hero-text">
+      <h1 class="section-title">
+        Book hassle-free <span class="hero-section_op-type">car maintenance </span>
+      </h1>
+      <p>We take your car to the best
+        local garage, with free collection and delivery.</p>
+      <p>All covered by a 12 month warranty. Easy.</p>
+      <button type="submit" class="btn btn-primary">Get a free quote</button>
+      <p>or call us on <a class="link" href="tel:071000000">071000000</a></p>
+    </div>
+  </div>
+</div>
+<hr>
+<section class="reassurance-block align-items-center">
+  <div class="container">
+    <div class="rb-wrapper text-center">
+      <div class="d-inline-block">
+        <div class="rb-icon d-inline-block">
+          <img src="/img/blue.png" srcset="/img/blue@2x.png 2x, /img/blue@3x.png 3x" class="blue">
+        </div>
+        <div class="rb-text d-inline-block">Free collection &amp; delivery</div>
+      </div>
+      <div class="d-inline-block">
+        <div class="rb-icon d-inline-block">
+          <img src="/img/blue.png" srcset="/img/blue@2x.png 2x, /img/blue@3x.png 3x" class="blue">
+        </div>
+        <div class="rb-text d-inline-block">Upfront, transparent pricing</div>
+      </div>
+      <div class="d-inline-block">
+        <div class="rb-icon d-inline-block">
+          <img src="/img/blue.png" srcset="/img/blue@2x.png 2x, /img/blue@3x.png 3x" class="blue">
+        </div>
+        <div class="rb-text d-inline-block">12 month warranty</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr>
+<section id="how-it-works" name="how-it-works" class="how-it-works-wrapper section-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 order-1">
+        <h2 class="section-title">How it works</h2>
+      </div>
+      <div class="col-12 col-lg-5 order-last order-lg-2">
+        <div class="d-none d-lg-block">
+          <div class="block-section">
+            <div class="block-icon">
+              <div class="block-icon-wrapper">
+                <div class="block-icon-image">
+                  <span class="block-icon-number">1</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <h4 class="block-title">We pick your car up for free</h4>
+              <p class="block-text">Our fully-insured
+                <span class="font-italic">Fixter Heroes</span> ⚡️ will pick up your car, from work or home. Whenever suits you.</p>
+            </div>
+          </div>
+          <div class="block-section js-video-2">
+            <div class="block-icon">
+              <div class="block-icon-wrapper">
+                <div class="block-icon-image">
+                  <span class="block-icon-number">2</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <h4 class="block-title">Our mechanics select the best garage</h4>
+              <p class="block-text">Our
+                <a class="link" href="/faq/about-fixter/who-are-james-and-steve" target="_blank" name="faq-james-and-steve">certified mechanics</a> choose a
+                <a class="link" href="/faq/fixter-garages/which-garages-do-you-work-with" target="_blank">carefully-vetted</a> local garage, and approve the work 👍</p>
+            </div>
+          </div>
+          <div class="block-section">
+            <div class="block-icon">
+              <div class="block-icon-wrapper">
+                <div class="block-icon-image">
+                  <span class="block-icon-number">3</span>
+                </div>
+              </div>
+            </div>
+            <div class="block-content">
+              <h4 class="block-title">We return your car</h4>
+              <p class="block-text">Free of charge, with the service book stamped and including a 12 month warranty.</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center d-lg-none">
+          <div class="slide-1">
+            <div class="heading">1. We pick up your car for free</div>
+            <div class="content">Our fully-insured
+              <span class="font-italic">Garage Fixers</span> ⚡ ️will pick up your car, from work or home. Whenever suits you.</div>
+          </div>
+          <div class="slide-2">
+            <div class="">2. Our mechanics select the best garage</div>
+            <div class="content">Our certified mechanics choose a carefully-vetted local garage, and approve the work 👍</div>
+          </div>
+          <div class="slide-3">
+            <div class="vheading">3. We return your car</div>
+            <div class="content">Free of charge, with the service book stamped and including a 12 month warranty.</div>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="fixter-prices section-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="section-title">Upfront, affordable prices</h2>
+        <h4 class="section-subtitle">We offer the best value car maintenance around, with free collection and delivery.</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center pricing-plans-wrapper">
+      <div class="col-12 col-lg-4">
+        <div class="price-plan-left d-flex flex-column justify-content-between">
+          <div class="plan-title">MOT</div>
+          <div class="plan-content">
+            <p class="plan-desc">Fixed price</p>
+            <p class="plan-price">KES29</p>
+          </div>
+          <div class="plan-cta">
+            <a href="" class="btn btn-secondary">Book a Vehicle Health Check</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="price-plan-right d-flex flex-column justify-content-between">
+          <div class="plan-title">Servicing</div>
+          <div class="plan-content">
+            <div class="row no-gutters align-items-center">
+              <div class="col text-right">
+                <span class="plan-desc">Interim from</span>
+              </div>
+              <div class="col text-left">
+                <span class="plan-price">KES 5900</span>
+              </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col text-right">
+                <span class="plan-desc">Full from</span>
+              </div>
+              <div class="col text-left">
+                <span class="plan-price">KES 9900</span>
+              </div>
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col text-right">
+                <span class="plan-desc">Major from</span>
+              </div>
+              <div class="col text-left">
+                <span class="plan-price">KES 15900</span>
+              </div>
+            </div>
+          </div>
+          <div class="plan-cta">
+            <a href="/" class="btn btn-primary">Get a free quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center bottom-section">
+      <p class="d-none d-lg-block">Find out more about pricing</p>
+      <a href="/pricing/" class="btn btn-tertiary d-none d-lg-block">Learn more</a>
+      <a href="/pricing/" class="btn-link d-inline-block d-sm-none d-md-none d-lg-none">Learn more about pricing</a>
+    </div>
+  </div>
+</section>
+<section class="team-wrapper section-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="team-video-wrapper col-12 col-lg-4 offset-lg-1 order-2 order-lg-1 align-self-center">
+        <img class="js-team-play-control" src="/img/control-play.svg" />
+        <img class="js-team-pause-control" src="/img/control-pause.svg" />
+        <canvas id="team-canvas" class="js-team-video" style="display: none;"></canvas>
+        <video id="team-video" class="team-video js-tv-desktop" src="/img/fixter--video--james-and-steve.mp4" loop muted playsinline>
+          <source src="/img/fixter--video--james-and-steve.mp4">
+          <img class='lazy' data-src="/img/fixter--still-james-and-steve.png" src="/img/placeholder-fixter--still-james-and-steve.png">
+        </video>
+      </div>
+      <div class="col-12 col-lg-6 offset-lg-1 order-1 order-lg-2">
+        <h2 class="team-title d-none d-lg-block">Our mechanics, on your side</h2>
+        <h2 class="team-title d-lg-none">Our experts, on your side</h2>
+        <p class="team-description">Meet James and Steve, our in-house experts. They deal with the garage directly, and keep you in the loop throughout.
+          Phew.
+        </p>
+        <div class="d-none d-lg-block">
+          <div class="team-skills">
+            <div class="team-skill">
+              <div class="skill-icon"></div>
+              <div class="skill-text d-none d-lg-block">Fully-qualified mechanics, each with 10+ years’ experience</div>
+              <div class="skill-text d-lg-none">Work with 500+ garages in the UK</div>
+            </div>
+            <div class="team-skill">
+              <div class="skill-icon"></div>
+              <div class="skill-text d-none d-lg-block">Approve all work on your car personally 👍</div>
+              <div class="skill-text d-lg-none">Approve all the work personally</div>
+            </div>
+            <div class="team-skill">
+              <div class="skill-icon"></div>
+              <div class="skill-text d-none d-lg-block">Available 7am to 7pm, Monday - Friday</div>
+              <div class="skill-text d-lg-none">Available 7am-7pm, Monday - Friday</div>
+            </div>
+            <div class="team-skill">
+              <div class="skill-icon"></div>
+              <div class="skill-text d-none d-lg-block">
+                <a id="intercom-custom-link" href="" class="link">Live chat</a>,
+                <a href="mailTo:help@fixter.co.uk" class="link">help@fixter.co.uk</a> or call <a class="link" href="tel:0800 368 8632">0800 368 8632</a>
+              </div>
+              <div class="skill-text d-lg-none"><a href="" id="intercom-custom-link">Live chat</a>, or call <a href="tel:0800 368 8632">0800 368 8632</a></div>
+            </div>
+          </div>
+          <a id="intercom-custom-link" href="" class="btn btn-primary btn-desktop">Ask a question</a>
+        </div>
+      </div>
+      <div class="col-12 d-lg-none order-12 order-lg-12">
+        <div class="team-skills">
+          <div class="team-skill">
+            <div class="skill-icon"></div>
+            <div class="skill-text d-none d-lg-block">Fully-qualified mechanics, each with 10+ years’ experience</div>
+            <div class="skill-text d-lg-none">Work with 500+ garages in the UK</div>
+          </div>
+          <div class="team-skill">
+            <div class="skill-icon"></div>
+            <div class="skill-text d-none d-lg-block">Approve all work on your car personally 👍</div>
+            <div class="skill-text d-lg-none">Approve all the work personally</div>
+          </div>
+          <div class="team-skill">
+            <div class="skill-icon"></div>
+            <div class="skill-text d-none d-lg-block">Available 7am to 7pm, Monday - Friday</div>
+            <div class="skill-text d-lg-none">Available 7am-7pm, Monday - Friday</div>
+          </div>
+          <div class="team-skill">
+            <div class="skill-icon"></div>
+            <div class="skill-text d-none d-lg-block">
+              <a class="link" id="intercom-custom-link">Live chat</a>,
+              <a class="link">help@garagefixter.co.ke</a> or call <a href="tel:071000000" class="link">071000000</a>
+            </div>
+            <div class="skill-text d-lg-none"><a href="" class="link" id="intercom-custom-link">Live chat</a>, or call <a class="link" href="tel:071000000">071000000</a></div>
+          </div>
+          <a id="intercom-custom-link" href="" class="btn btn-tertiary btn-mobile">Ask us a question</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ::::::::::::::::::::::::::: Footer Area Start ::::::::::::::::::::::::::: -->
+<footer class="footer_area section-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a href="#">
+          <img src="/img/logo--lockup.svg" class="fixter-logo align-top" alt="Fixter">
+        </a>
+      </div>
+    </div>
+    <div class="row d-none d-lg-flex">
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="list-unstyled footer-links">
+              <li>
+                <p class="column-title">Support</p>
+              </li>
+              <li>
+                <a href="https://www.fixter.co.uk/#how-it-works">How it works</a>
+              </li>
+              <li>
+                <a href="/faq" target="_blank">FAQs</a>
+              </li>
+              <li>
+                <a href="/contact-us/">Contact us</a>
+              </li>
+              <li>
+                <a href="/pricing/">Pricing</a>
+              </li>
+              <li>
+                <a href="https://app.fixter.co.uk/login">Login</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <ul class="list-unstyled footer-links">
+              <li>
+                <p class="column-title">Company</p>
+              </li>
+              <li>
+                <a href="/about-us/">About</a>
+              </li>
+              <li>
+                <a href="" target="_blank">Blog</a>
+              </li>
+              <li>
+                <a href="" target="_blank">Careers</a>
+              </li>
+              <li>
+                <a href="" target="_blank">Drivers</a>
+              </li>
+              <li>
+                <a href="/contact-us/">Garages</a>
+              </li>
+              <li>
+                <a href="/partners/">Partnerships</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <ul class="list-unstyled footer-links">
+              <li>
+                <p class="column-title">Locations</p>
+              </li>
+              <li>
+                <a href="/birmingham">CBD</a>
+              </li>
+              <li>
+                <a href="/bristol">Ngara</a>
+              </li>
+              <li>
+                <a href="/cardiff">Ngong Road</a>
+              </li>
+              <li>
+                <a href="/leeds">Mombasa Road</a>
+              </li>
+              <li>
+                <a href="/liverpool">Westlands</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 footer-right">
+        <div class="social-media_links">
+          <a href="" target="_blank" name="fixter_facebook"><img src="/img/social-media/facebook.svg" class="social-icons"></a>
+          <a href="" target="_blank" name="fixter_twitter"><img src="/img/social-media/twitter.svg" class="social-icons"></a>
+          <a href="" target="_blank" name="fixter_instagram"><img src="/img/social-media/instagram.svg" class="social-icons"></a>
+          <a href="" target="_blank" name="fixter_linkedin"><img src="/img/social-media/linkedin.svg" class="social-icons"></a>
+        </div>
+        <p>Call us free on <a href="tel:0800 368 8632" class="link">0800 368 8632</a></p>
+        <div class="d-flex align-items center">
+          <div class="axa-logo">
+            <img src="/img/axa.png" />
+          </div>
+          <div class="axa-text">
+            <p>Partnered with</p>
+            <p>AXAInsurance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile row d-flex d-lg-none">
+      <div class="col-12 axa-mobile">
+        <div class="d-flex align-items center">
+          <div class="axa-logo">
+            <img src="/img/axa.png" />
+          </div>
+          <div class="axa-text">
+            <p>Partnered with Insurance</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <ul class="list-unstyled footer-links">
+          <li>
+            <p class="column-title">Support</p>
+          </li>
+          <li>
+            <a href="https://www.fixter.co.uk/#how-it-works">How it works</a>
+          </li>
+          <li>
+            <a href="/faq" target="_blank">FAQs</a>
+          </li>
+          <li>
+            <a href="/contact-us/">Contact us</a>
+          </li>
+          <li>
+            <a href="/pricing/">Pricing</a>
+          </li>
+          <li>
+            <a href="https://app.fixter.co.uk/login">Login</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <ul class="list-unstyled footer-links">
+          <li>
+            <p class="column-title">Company</p>
+          </li>
+          <li>
+            <a href="/about-us/">About</a>
+          </li>
+          <li>
+            <a href="https://www.fixter.co.uk/blog/" target="_blank">Blog</a>
+          </li>
+          <li>
+            <a href="https://careers.smartrecruiters.com/FixterLtd/" target="_blank" target="_blank">Careers</a>
+          </li>
+          <li>
+            <a href="https://jobs.smartrecruiters.com/FixterLtd/743999674883374--fixter-hero-self-employed-vehicle-delivery-driver" target="_blank">Drivers</a>
+          </li>
+          <li>
+            <a href="/contact-us/">Garages</a>
+          </li>
+          <li>
+            <a href="/partners/">Partnerships</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <ul class="list-unstyled footer-links">
+          <li>
+            <p class="column-title">Locations</p>
+          </li>
+          <li>
+            <a href="/birmingham">CBD</a>
+          </li>
+          <li>
+            <a href="/bristol">Ngara</a>
+          </li>
+          <li>
+            <a href="/cardiff">Ngong Road</a>
+          </li>
+          <li>
+            <a href="/leeds">Mombasa Road</a>
+          </li>
+          <li>
+            <a href="/liverpool">Westlands</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div class="social-media_links">
+          <a href="" target="_blank"><img src="/img/social-media/facebook.svg" alt="Facebook" class="social-icons"></a>
+          <a href="" target="_blank"><img src="/img/social-media/twitter.svg" alt="Twitter" class="social-icons"></a>
+          <a href="" target="_blank"><img src="/img/social-media/instagram.svg" alt="Instagram" class="social-icons"></a>
+          <a href="" target="_blank"><img src="/img/social-media/linkedin.svg" alt="LinkedIn" class="social-icons"></a>
+        </div>
+      </div>
+    </div>
+    <div class="row footer-bottom justify-content-between">
+      <div class="col-12 col-lg-8">
+        <ul class="list-inline row mb-0">
+          <li class="list-inline-item col-6 col-lg-3">&copy; 2018 Fixter Limited</li>
+          <li class="list-inline-item col-6 col-lg-3">Company No. XXXXXXXXX</li>
+        </ul>
+      </div>
+      <div class="col-lg-4 d-none d-lg-flex">
+        <a href="/terms-conditions/" target="_blank">Terms and Conditions</a>
+        <a href="/privacy-policy/" target="_blank" style="margin-left: 50px;">Cookie and Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
