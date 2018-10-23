@@ -79,7 +79,7 @@ def home(request):
 
         else:
             form = BookingForm()
-            return render(request, "vehicle/home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
+            return render(request, "vehicles/home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
     else:
         return render(request, "home.html")
 
