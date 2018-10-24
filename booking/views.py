@@ -13,6 +13,11 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib import messages
 
+import datetime
+from datetime import timedelta
+import pytz
+from googleapiclient.discovery import build
+from oauth2client import file, client, tools
 # Create your views here.
 
 

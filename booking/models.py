@@ -66,6 +66,10 @@ class Booking(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE,
                                 related_name='bookings', null=True)
     service = MultiSelectField(choices=CHOICES, default=0)
+    # slot_date = models.CharField(max_length=20, null=True)
+    # slot_time = models.CharField(max_length=20, null=True)
+    # slot_end_time = models.CharField(max_length=20, null=True)
+    # is_scheduled = models.BooleanField(default=False)
 
     @classmethod
     def get_booking(cls):
