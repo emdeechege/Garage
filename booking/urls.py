@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^editprofile/$', views.edit_profile, name='edit_profile'),
     url(r'^upload/', views.update_vehicle, name='upload'),
+    url(r'^booking/(?P<pk>\d+)', views.add_booking, name='booking'),
 ]
 
 if settings.DEBUG:

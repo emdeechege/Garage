@@ -78,7 +78,7 @@ def home(request):
             form = BookingForm(request.POST)
             if form.is_valid():
                 booking = form.save(commit=False)
-                booking.user = current_user
+                booking.poster = current_user
                 booking.save()
             return redirect('home')
 
@@ -86,7 +86,7 @@ def home(request):
             form = BookingForm()
             return render(request, "vehicles/home.html", {"vehicles": vehicles, "bookings": bookings, "form": form, "profile": profile})
     else:
-        return render(request, "home.html")
+        return render(request, "vehicles/home.html")
 
 
 @login_required(login_url='/accounts/login/')
@@ -133,3 +133,20 @@ def update_vehicle(request):
             else:
                 form = UploadForm()
             return render(request, 'vehicles/upload.html', {"user": current_user, "form": form})
+
+
+@login_required(login_url='/accounts/login/')
+def add_booking(request, pk):
+    vehicle = get_object_or_404(Vehicle, pk=pk)
+    current_user = request.user
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.vehicle = image
+            booking.poster = current_user
+            booking.save()
+            return redirect('home')
+    else:
+        form = CommentForm()
+        return render(request, 'vehicles/booking.html', {"user": current_user, "comment_form": form})
