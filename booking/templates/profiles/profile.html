@@ -43,7 +43,7 @@
           </ul>
           <p class="font3">{{profile.bio}}</p>
           {% if profile.user == user %}
-          <p><a href="">Add Vehicle</a></p>
+          <p><a href="{% url 'upload' %}">Add Vehicle</a></p>
           {% endif %}
         </div>
       </div>

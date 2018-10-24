@@ -21,57 +21,15 @@ from oauth2client import file, client, tools
 # Create your views here.
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            current_user = form.save(commit=False)
-            current_user.is_active = False
-            current_user.save()
-            current_site = get_current_site(request)
-            mail_subject = 'Activate your Garage Fix Account.'
-            message = render_to_string('registration/acc_active_email.html', {
-                'user': current_user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(current_user.pk)),
-                'token': account_activation_token.make_token(current_user),
-            })
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(
-                mail_subject, message, to=[to_email]
-            )
-            email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
-    else:
-        form = SignupForm()
-    return render(request, 'registration/signup.html', {'form': form})
-
-
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        current_user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
-        current_user = None
-    if current_user is not None and account_activation_token.check_token(current_user, token):
-        current_user.is_active = True
-        current_user.save()
-        login(request, current_user)
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. <a href="https://garage-fix.herokuapp.com"> Login </a> Now you can login your account.')
-    else:
-        return HttpResponse('Activation link is invalid!')
-
-
 def welcome(request):
     return render(request, 'index.html')
 
 
 def home(request):
     if request.user.is_authenticated:
-        vehicles = Vehicle.get_vehicles()
-        bookings = Booking.get_booking()
-        profile = Profile.get_profile()
+        vehicles = Vehicle.objects.filter(posted_by=request.user).all()
+        bookings = Booking.objects.filter(poster=request.user).all()
+        profile = Profile.objects.get(user=request.user)
 
         current_user = request.user
         if request.method == 'POST':
