@@ -1,12 +1,21 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
+from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
 
 
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         exclude = ['poster', 'vehicle']
+        widgets = {
+            'slot_date': DatePickerInput(options={
+                "format": "mm/dd/yyyy",
+                "autoclose": True
+            }),
+            'slot_time': TimePickerInput(),
+            'slot_end_time': TimePickerInput(),
+        }
 
 
 class EditProfileForm(forms.ModelForm):

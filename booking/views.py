@@ -101,7 +101,7 @@ def add_booking(request, pk):
         form = BookingForm(request.POST)
         if form.is_valid():
             booking = form.save(commit=False)
-            booking.vehicle = image
+            booking.vehicle = vehicle
             booking.poster = current_user
             booking.save()
             return redirect('home')

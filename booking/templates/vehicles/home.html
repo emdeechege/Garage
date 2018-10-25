@@ -2,6 +2,9 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4 %}
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
 <br>
 <br>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -35,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		{% endfor %}
 	</div>
 <br>

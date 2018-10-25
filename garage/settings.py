@@ -65,6 +65,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap_datepicker_plus',
     'multiselectfield',
     'rest_framework.authtoken',
     'rest_framework',

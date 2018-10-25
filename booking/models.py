@@ -4,6 +4,9 @@ from django.db.models.signals import post_save
 import datetime as dt
 from multiselectfield import MultiSelectField
 from django.dispatch import receiver
+from datetime import datetime
+from django.utils import timezone
+
 # Create your models here.
 
 
@@ -66,10 +69,10 @@ class Booking(models.Model):
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE,
                                 related_name='bookings', null=True)
     service = MultiSelectField(choices=CHOICES, default=0)
-    # slot_date = models.CharField(max_length=20, null=True)
-    # slot_time = models.CharField(max_length=20, null=True)
-    # slot_end_time = models.CharField(max_length=20, null=True)
-    # is_scheduled = models.BooleanField(default=False)
+    slot_date = models.DateField(default=datetime.now, blank=True)
+    slot_time = models.TimeField(default=datetime.now, blank=True)
+    slot_end_time = models.TimeField(default=datetime.now, blank=True)
+    is_scheduled = models.BooleanField(default=False)
 
     @classmethod
     def get_booking(cls):
