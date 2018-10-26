@@ -7,12 +7,9 @@ from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        exclude = ['poster', 'vehicle']
+        exclude = ['poster', 'vehicle', 'is_scheduled']
         widgets = {
-            'slot_date': DatePickerInput(options={
-                "format": "mm/dd/yyyy",
-                "autoclose": True
-            }),
+            'slot_date': DatePickerInput(),
             'slot_time': TimePickerInput(),
             'slot_end_time': TimePickerInput(),
         }

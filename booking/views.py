@@ -106,5 +106,5 @@ def add_booking(request, pk):
             booking.save()
             return redirect('home')
     else:
-        form = CommentForm()
-        return render(request, 'vehicles/booking.html', {"user": current_user, "comment_form": form})
+        form = BookingForm()
+        return render(request, 'vehicles/booking.html', {"user": current_user, "booking_form": form})

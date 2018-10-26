@@ -2,254 +2,273 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
 {% block extrahead %}
 {{ form.media }}
 {% endblock %}
 <br>
 <br>
 <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-	<div class="row">
-		<div class="col-1"></div>
-		<div class="col-9" style="max-width:40rem; margin-top:20px;">
-			{% for car in vehicles %}
+<div class="row">
+	<div class="col-1"></div>
+	<div class="col-9" style="max-width:40rem; margin-top:20px;">
+		{% for car in vehicles %}
 
-			<div class="card mr-0" style="max-width:40rem; margin-top:10px;">
-				<div class="card-header"><img class="img-fluid rounded-circle" src="{{car.profile.profile_photo.url}}" style="height:40px;margin-top:5px;margin-bottom:5px;">
-					<a href="/profile/{{user.id}}">
-						<label>{{car.posted_by}}</label></a>
+		<div class="card mr-0" style="max-width:40rem; margin-top:10px;">
+			<div class="card-header"><img class="img-fluid rounded-circle" src="{{car.profile.profile_photo.url}}" style="height:40px;margin-top:5px;margin-bottom:5px;">
+				<label>{{car.posted_by}}</label>
+			</div>
+			<img src="{{car.vehicle_image.url}}" class="card-img-top">
+			<div class="card-body">
+				{% if bookings %}
+				<h4>
+					<b>Vehicle already scheduled for service..</b>
+				</h4>
+				{% else %}
+				{{form.media}}
+
+
+				<form action="{%url 'booking' pk=car.id%}" method="post" enctype="multipart/form-data">
+					{%csrf_token%}
+
+					{% bootstrap_form form%}
+					<input type="submit" class="btn btn-success btn-lg" value="Post">
+				</form>
+
+				{% block scripts %}
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+				{% bootstrap_javascript %}
+				{% endblock %}
+			</div>
+
+			{% endif %}
+		</div>
+	</div>
+	{% if username == 'master' %}
+	{% for booked in bookings %}
+	<tr>
+		<td>{{booked.poster}}</td>
+		<td>{{booked.slot_date}}</td>
+		<td>{{booked.slot_time}}</td>
+		<td>{{booked.slot_end_time}}</td>
+		<td><input type="submit" name="accept" align="middle" value="Schedule"> </td>
+		<td><input type="submit" name="reject" align="middle" value="Reject"> </td>
+	</tr>
+	{% endfor %}
+	{% endif %}
+
+	{% endfor %}
+</div>
+<br>
+<br>
+<!-- ::::::::::::::::::::::::::: Footer Area Start ::::::::::::::::::::::::::: -->
+<footer class="footer_area section-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<a href="#">
+					<img src="/static/img/try.png" class="fixter-logo align-top" alt="Garage Fix">
+				</a>
+			</div>
+		</div>
+		<div class="row d-none d-lg-flex">
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="col-lg-3">
+						<ul class="list-unstyled footer-links">
+							<li>
+								<p class="column-title">Support</p>
+							</li>
+							<li>
+								<a href="#">How it works</a>
+							</li>
+							<li>
+								<a href="/faq" target="_blank">FAQs</a>
+							</li>
+							<li>
+								<a href="/contact-us/">Contact us</a>
+							</li>
+							<li>
+								<a href="/pricing/">Pricing</a>
+							</li>
+							<li>
+								<a href="/accounts/login">Login</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-3">
+						<ul class="list-unstyled footer-links">
+							<li>
+								<p class="column-title">Company</p>
+							</li>
+							<li>
+								<a href="/about-us/">About</a>
+							</li>
+							<li>
+								<a href="" target="_blank">Blog</a>
+							</li>
+							<li>
+								<a href="" target="_blank">Careers</a>
+							</li>
+							<li>
+								<a href="" target="_blank">Drivers</a>
+							</li>
+							<li>
+								<a href="/contact-us/">Garages</a>
+							</li>
+							<li>
+								<a href="/partners/">Partnerships</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-3">
+						<ul class="list-unstyled footer-links">
+							<li>
+								<p class="column-title">Locations</p>
+							</li>
+							<li>
+								<a href="#">CBD</a>
+							</li>
+							<li>
+								<a href="#">Ngara</a>
+							</li>
+							<li>
+								<a href="#">Ngong Road</a>
+							</li>
+							<li>
+								<a href="#">Mombasa Road</a>
+							</li>
+							<li>
+								<a href="#">Westlands</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<img src="{{car.vehicle_image.url}}" class="card-img-top">
-				<div class="card-body">
-					{{form.media}}
+			</div>
+			<div class="col-lg-4 footer-right">
+				<div class="row">
+					<div class="social">
+						<ul>
+							<a class="hexagon" href="#"><i class="fab fa-linkedin fa-2x"></i> </a> <a class="hexagon" href="#"><i class="fab fa-twitter fa-2x"></i> </a> <a class="hexagon" href="#"><i class="fab fa-facebook fa-2x"></i> </a>
+							<a class="hexagon" href="#"> <i class="fab fa-instagram fa-2x"></i></a>
+						</ul>
+						<p>Call us free on <a href="tel:071000000" class="link">071000000</a></p>
+					</div>
 
+					<div class="d-flex align-footer-right">
+						<div class="axa-logo">
+							<img src="/static/img/ins.jpeg" style="width:50%;" />
+						</div>
+						<div class="axa-text">
+							<p>Partnered with</p>
+							<p>X Insurance</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-						<form action="{%url 'booking' pk=car.id%}" method="post" enctype="multipart/form-data">
-							{%csrf_token%}
-
-							{% bootstrap_form form%}
-							<input type="submit" class="btn btn-success btn-lg" value="Post">
-						</form>
-
-					{% block scripts %}
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-					{% bootstrap_javascript %}
-					{% endblock %}
+			<div class="mobile row d-flex d-lg-none">
+				<div class="col-12 axa-mobile">
+					<div class="d-flex align-items center">
+						<div class="axa-logo">
+							<img src="/static/img/ins.jpeg" size="100px200" />
+						</div>
+						<div class="axa-text">
+							<p>Partnered with Insurance</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 col-lg-4">
+					<ul class="list-unstyled footer-links">
+						<li>
+							<p class="column-title">Support</p>
+						</li>
+						<li>
+							<a href="#">How it works</a>
+						</li>
+						<li>
+							<a href="/faq" target="_blank">FAQs</a>
+						</li>
+						<li>
+							<a href="/contact-us/">Contact us</a>
+						</li>
+						<li>
+							<a href="/pricing/">Pricing</a>
+						</li>
+						<li>
+							<a href="accounts/login">Login</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-lg-4">
+					<ul class="list-unstyled footer-links">
+						<li>
+							<p class="column-title">Company</p>
+						</li>
+						<li>
+							<a href="/about-us/">About</a>
+						</li>
+						<li>
+							<a href="#">Blog</a>
+						</li>
+						<li>
+							<a href="#">Careers</a>
+						</li>
+						<li>
+							<a href="#">Drivers</a>
+						</li>
+						<li>
+							<a href="/contact-us/">Garages</a>
+						</li>
+						<li>
+							<a href="/partners/">Partnerships</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-lg-4">
+					<ul class="list-unstyled footer-links">
+						<li>
+							<p class="column-title">Locations</p>
+						</li>
+						<li>
+							<a href="#">CBD</a>
+						</li>
+						<li>
+							<a href="#">Ngara</a>
+						</li>
+						<li>
+							<a href="#">Ngong Road</a>
+						</li>
+						<li>
+							<a href="#">Mombasa Road</a>
+						</li>
+						<li>
+							<a href="#">Westlands</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-lg-4">
+					<div class="social-media_links">
+						<a hhref="#"><img src="/img/social-media/facebook.svg" alt="Facebook" class="social-icons"></a>
+						<a href="#"><img src="/img/social-media/twitter.svg" alt="Twitter" class="social-icons"></a>
+						<a href="#"><img src="/img/social-media/instagram.svg" alt="Instagram" class="social-icons"></a>
+						<a href="#"><img src="/img/social-media/linkedin.svg" alt="LinkedIn" class="social-icons"></a>
+					</div>
+				</div>
+			</div>
+			<div class="row footer-bottom justify-content-between">
+				<div class="col-12 col-lg-8">
+					<ul class="list-inline row mb-0">
+						<li class="list-inline-item col-6 col-lg-3">&copy; 2018 Fixter Limited</li>
+						<li class="list-inline-item col-6 col-lg-3">Company No. XXXXXXXXX</li>
+					</ul>
+				</div>
+				<div class="col-lg-4 d-none d-lg-flex">
+					<a href="/terms-conditions/" target="_blank">Terms and Conditions</a>
+					<a href="/privacy-policy/" target="_blank" style="margin-left: 50px;">Cookie and Privacy Policy</a>
 				</div>
 			</div>
 		</div>
-
-		{% endfor %}
-	</div>
-<br>
-<br>
-			<!-- ::::::::::::::::::::::::::: Footer Area Start ::::::::::::::::::::::::::: -->
-			<footer class="footer_area section-wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<a href="#">
-								<img src="/static/img/try.png" class="fixter-logo align-top" alt="Garage Fix">
-							</a>
-						</div>
-					</div>
-					<div class="row d-none d-lg-flex">
-						<div class="col-lg-8">
-							<div class="row">
-								<div class="col-lg-3">
-									<ul class="list-unstyled footer-links">
-										<li>
-											<p class="column-title">Support</p>
-										</li>
-										<li>
-											<a href="#">How it works</a>
-										</li>
-										<li>
-											<a href="/faq" target="_blank">FAQs</a>
-										</li>
-										<li>
-											<a href="/contact-us/">Contact us</a>
-										</li>
-										<li>
-											<a href="/pricing/">Pricing</a>
-										</li>
-										<li>
-											<a href="/accounts/login">Login</a>
-										</li>
-									</ul>
-								</div>
-								<div class="col-lg-3">
-									<ul class="list-unstyled footer-links">
-										<li>
-											<p class="column-title">Company</p>
-										</li>
-										<li>
-											<a href="/about-us/">About</a>
-										</li>
-										<li>
-											<a href="" target="_blank">Blog</a>
-										</li>
-										<li>
-											<a href="" target="_blank">Careers</a>
-										</li>
-										<li>
-											<a href="" target="_blank">Drivers</a>
-										</li>
-										<li>
-											<a href="/contact-us/">Garages</a>
-										</li>
-										<li>
-											<a href="/partners/">Partnerships</a>
-										</li>
-									</ul>
-								</div>
-								<div class="col-lg-3">
-									<ul class="list-unstyled footer-links">
-										<li>
-											<p class="column-title">Locations</p>
-										</li>
-										<li>
-											<a href="#">CBD</a>
-										</li>
-										<li>
-											<a href="#">Ngara</a>
-										</li>
-										<li>
-											<a href="#">Ngong Road</a>
-										</li>
-										<li>
-											<a href="#">Mombasa Road</a>
-										</li>
-										<li>
-											<a href="#">Westlands</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 footer-right">
-							<div class="row">
-								<div class="social">
-									<ul>
-										<a class="hexagon" href="#"><i class="fab fa-linkedin fa-2x"></i> </a> <a class="hexagon" href="#"><i class="fab fa-twitter fa-2x"></i> </a> <a class="hexagon" href="#"><i class="fab fa-facebook fa-2x"></i> </a>
-										<a class="hexagon" href="#"> <i class="fab fa-instagram fa-2x"></i></a>
-									</ul>
-									<p>Call us free on <a href="tel:071000000" class="link">071000000</a></p>
-								</div>
-
-								<div class="d-flex align-footer-right">
-									<div class="axa-logo">
-										<img src="/static/img/ins.jpeg" style="width:50%;" />
-									</div>
-									<div class="axa-text">
-										<p>Partnered with</p>
-										<p>X Insurance</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="mobile row d-flex d-lg-none">
-							<div class="col-12 axa-mobile">
-								<div class="d-flex align-items center">
-									<div class="axa-logo">
-										<img src="/static/img/ins.jpeg" size="100px200" />
-									</div>
-									<div class="axa-text">
-										<p>Partnered with Insurance</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-6 col-lg-4">
-								<ul class="list-unstyled footer-links">
-									<li>
-										<p class="column-title">Support</p>
-									</li>
-									<li>
-										<a href="#">How it works</a>
-									</li>
-									<li>
-										<a href="/faq" target="_blank">FAQs</a>
-									</li>
-									<li>
-										<a href="/contact-us/">Contact us</a>
-									</li>
-									<li>
-										<a href="/pricing/">Pricing</a>
-									</li>
-									<li>
-										<a href="accounts/login">Login</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-6 col-lg-4">
-								<ul class="list-unstyled footer-links">
-									<li>
-										<p class="column-title">Company</p>
-									</li>
-									<li>
-										<a href="/about-us/">About</a>
-									</li>
-									<li>
-										<a href="#">Blog</a>
-									</li>
-									<li>
-										<a href="#">Careers</a>
-									</li>
-									<li>
-										<a href="#">Drivers</a>
-									</li>
-									<li>
-										<a href="/contact-us/">Garages</a>
-									</li>
-									<li>
-										<a href="/partners/">Partnerships</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-6 col-lg-4">
-								<ul class="list-unstyled footer-links">
-									<li>
-										<p class="column-title">Locations</p>
-									</li>
-									<li>
-										<a href="#">CBD</a>
-									</li>
-									<li>
-										<a href="#">Ngara</a>
-									</li>
-									<li>
-										<a href="#">Ngong Road</a>
-									</li>
-									<li>
-										<a href="#">Mombasa Road</a>
-									</li>
-									<li>
-										<a href="#">Westlands</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-6 col-lg-4">
-								<div class="social-media_links">
-									<a hhref="#"><img src="/img/social-media/facebook.svg" alt="Facebook" class="social-icons"></a>
-									<a href="#"><img src="/img/social-media/twitter.svg" alt="Twitter" class="social-icons"></a>
-									<a href="#"><img src="/img/social-media/instagram.svg" alt="Instagram" class="social-icons"></a>
-									<a href="#"><img src="/img/social-media/linkedin.svg" alt="LinkedIn" class="social-icons"></a>
-								</div>
-							</div>
-						</div>
-						<div class="row footer-bottom justify-content-between">
-							<div class="col-12 col-lg-8">
-								<ul class="list-inline row mb-0">
-									<li class="list-inline-item col-6 col-lg-3">&copy; 2018 Fixter Limited</li>
-									<li class="list-inline-item col-6 col-lg-3">Company No. XXXXXXXXX</li>
-								</ul>
-							</div>
-							<div class="col-lg-4 d-none d-lg-flex">
-								<a href="/terms-conditions/" target="_blank">Terms and Conditions</a>
-								<a href="/privacy-policy/" target="_blank" style="margin-left: 50px;">Cookie and Privacy Policy</a>
-							</div>
-						</div>
-					</div>
-			</footer>
-			{% endblock %}
+</footer>
+{% endblock %}
